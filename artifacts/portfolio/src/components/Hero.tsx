@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import heroImage from '../assets/hero-image.png';
-import { Layout, PenTool, Home, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Layout, PenTool, Home } from 'lucide-react';
 
 export default function Hero() {
   const scrollToContact = () => {
@@ -57,31 +56,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* CTA row below the image */}
-      <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-4 py-8 px-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.1, duration: 0.5 }}
-      >
-        <Button
-          size="lg"
-          className="w-full sm:w-auto px-8 text-base rounded-full"
-          onClick={scrollToWork}
-          data-testid="button-view-work"
-        >
-          View My Work <ArrowRight className="ml-2 w-4 h-4" />
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          className="w-full sm:w-auto px-8 text-base rounded-full"
-          onClick={scrollToContact}
-          data-testid="button-get-in-touch"
-        >
-          Get In Touch
-        </Button>
-      </motion.div>
 
     </section>
   );

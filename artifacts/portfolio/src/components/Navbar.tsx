@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X, Brain } from 'lucide-react';
+import { Moon, Sun, Menu, X, Heart } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 export default function Navbar() {
@@ -49,8 +49,8 @@ export default function Navbar() {
           data-testid="link-logo"
         >
           <span className="inline-flex items-center gap-1.5">
-            <Brain size={20} className="text-primary" strokeWidth={2.5} />
-            <span className="font-normal text-foreground">kar</span><span className="font-bold text-primary">THINK</span>
+            <Heart size={18} className="text-primary fill-primary" strokeWidth={0} />
+            <span style={{ fontFamily: 'Poppins, sans-serif' }} className="font-normal text-foreground">kar</span><span style={{ fontFamily: 'Poppins, sans-serif' }} className="font-bold text-primary">think</span>
           </span>
         </a>
 

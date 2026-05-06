@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "hX3bOw_ZQDzrLMS8GBUn7"
+uri = "file://artifacts/portfolio/src/assets/project-1.png"
+type = "image"
+title = "Minimalist architecture model"
+
+[[generated]]
+id = "kxsR06oW232Bi9hDwz9GR"
+uri = "file://artifacts/portfolio/src/assets/project-2.png"
+type = "image"
+title = "UI/UX wireframes"
+
+[[generated]]
+id = "eRqLAaX4a5jiYhEoT3KVO"
+uri = "file://artifacts/portfolio/src/assets/project-3.png"
+type = "image"
+title = "Abstract visual design"
+
+[[generated]]
+id = "drlZ4EdLpwSuzd8DoixfM"
+uri = "file://artifacts/portfolio/src/assets/project-4.png"
+type = "image"
+title = "Modern interior space"

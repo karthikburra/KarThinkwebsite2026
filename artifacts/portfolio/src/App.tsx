@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import ExpertiseBanner from '@/components/ExpertiseBanner';
 import About from '@/components/About';
 import Disciplines from '@/components/Disciplines';
 import Work from '@/components/Work';
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <main>
           <Hero />
+          <ExpertiseBanner />
           <About />
           <Disciplines />
           <Work />

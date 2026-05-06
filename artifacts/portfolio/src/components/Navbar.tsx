@@ -48,9 +48,9 @@ export default function Navbar() {
           className="text-xl font-serif tracking-tight z-50 relative"
           data-testid="link-logo"
         >
-          <span className="inline-flex items-center gap-1.5">
-            <Heart size={18} className="text-primary fill-primary" strokeWidth={0} />
-            <span style={{ fontFamily: 'Poppins, sans-serif' }} className="font-normal text-foreground">kar</span><span style={{ fontFamily: 'Poppins, sans-serif' }} className="font-bold text-primary">think</span>
+          <span className="inline-flex items-center gap-2">
+            <Heart size={24} className="text-primary fill-primary" strokeWidth={0} />
+            <span style={{ fontFamily: 'Poppins, sans-serif' }}><span className="font-normal text-foreground">kar</span><span className="font-bold text-primary">think</span></span>
           </span>
         </a>
 

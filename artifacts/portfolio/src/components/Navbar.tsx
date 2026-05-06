@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Brain } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 export default function Navbar() {
@@ -48,9 +48,10 @@ export default function Navbar() {
           className="text-xl font-serif tracking-tight z-50 relative"
           data-testid="link-logo"
         >
-          <span className="font-normal text-foreground">kar</span>
-          <span className="font-bold text-foreground dark:text-white">THINK</span>
-          <span className="text-primary">.</span>
+          <span className="inline-flex items-center gap-1.5">
+            <Brain size={20} className="text-primary" strokeWidth={2.5} />
+            <span className="font-normal text-foreground">kar</span><span className="font-bold text-primary">THINK</span>
+          </span>
         </a>
 
         {/* Desktop Nav */}

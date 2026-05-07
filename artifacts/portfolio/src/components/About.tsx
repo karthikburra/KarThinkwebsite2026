@@ -28,6 +28,21 @@ export default function About() {
   return (
     <section id="about" className="py-24 md:py-32 bg-background relative">
       <div className="container mx-auto px-6">
+
+        {/* Full-width quote above section */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="mb-20 text-center max-w-3xl mx-auto"
+        >
+          <span className="text-5xl text-primary font-serif leading-none select-none">"</span>
+          <p className="text-2xl md:text-3xl font-serif font-semibold text-foreground leading-snug -mt-3">
+            I don't just design how things <span className="text-primary">look;</span> I design how they <span className="text-primary">work,</span> how they <span className="text-primary">feel,</span> and why they <span className="text-primary">exist.</span>
+          </p>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Bio Section */}
@@ -46,9 +61,6 @@ export default function About() {
               </p>
               <p>
                 I believe that good design is invisible—it solves problems quietly and elegantly. Whether I'm designing a complex enterprise dashboard, a striking brand identity, or conceptualizing spatial flows, my approach remains the same: understand the human, define the constraints, and craft the solution.
-              </p>
-              <p className="font-medium text-foreground italic border-l-4 border-primary pl-4 py-1">
-                "I don't just design how things look; I design how they work, how they feel, and why they exist."
               </p>
             </div>
           </motion.div>

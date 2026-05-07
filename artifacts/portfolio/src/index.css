@@ -114,8 +114,8 @@
   --chart-4: 0 0% 60%;
   --chart-5: 0 0% 80%;
 
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-serif: 'Syne', sans-serif;
+  --app-font-sans: 'Poppins', sans-serif;
+  --app-font-serif: 'Poppins', sans-serif;
   --app-font-mono: Menlo, monospace;
   --radius: .5rem; /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00); /*replace with H S L */

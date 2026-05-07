@@ -37,8 +37,9 @@ export default function About() {
           transition={{ duration: 0.7 }}
           className="mb-20 text-center max-w-3xl mx-auto"
         >
-          <p className="text-2xl md:text-3xl font-serif font-semibold text-foreground leading-snug">
-            I don't just design how things <span className="text-primary">look;</span> I design how they <span className="text-primary">work,</span> how they <span className="text-primary">feel,</span> and why they <span className="text-primary">exist.</span>
+          <p className="text-2xl md:text-3xl font-semibold text-foreground leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            I don't just design how things <span className="text-primary">look,</span><br />
+            I design how they <span className="text-primary">work,</span> how they <span className="text-primary">feel,</span> and why they <span className="text-primary">exist.</span>
           </p>
         </motion.div>
 

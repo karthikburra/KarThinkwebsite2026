@@ -26,7 +26,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background relative">
+    <section id="about" className="pt-10 pb-24 md:pb-32 bg-background relative">
       <div className="container mx-auto px-6">
 
         {/* Full-width quote above section */}
@@ -37,8 +37,7 @@ export default function About() {
           transition={{ duration: 0.7 }}
           className="mb-20 text-center max-w-3xl mx-auto"
         >
-          <span className="text-5xl text-primary font-serif leading-none select-none">"</span>
-          <p className="text-2xl md:text-3xl font-serif font-semibold text-foreground leading-snug -mt-3">
+          <p className="text-2xl md:text-3xl font-serif font-semibold text-foreground leading-snug">
             I don't just design how things <span className="text-primary">look;</span> I design how they <span className="text-primary">work,</span> how they <span className="text-primary">feel,</span> and why they <span className="text-primary">exist.</span>
           </p>
         </motion.div>

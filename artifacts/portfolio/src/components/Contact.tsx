@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { SiDribbble, SiBehance } from 'react-icons/si';
 import { Linkedin } from 'lucide-react';
 import { Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -52,8 +51,6 @@ export default function Contact() {
                 <div className="flex gap-4">
                   {[
                     { icon: <Linkedin className="w-5 h-5" />, href: "#" },
-                    { icon: <SiDribbble className="w-5 h-5" />, href: "#" },
-                    { icon: <SiBehance className="w-5 h-5" />, href: "#" },
                   ].map((social, i) => (
                     <a 
                       key={i}

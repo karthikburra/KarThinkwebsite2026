@@ -1,10 +1,9 @@
+import nodemailer from "nodemailer";
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-
-  // We use dynamic import for nodemailer so it only loads when the function runs
-  const nodemailer = await import('nodemailer');
 
   try {
     const { name, email, message } = req.body;

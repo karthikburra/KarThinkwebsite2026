@@ -1,18 +1,21 @@
 import { Router, type IRouter, type Request, type Response } from "express";
 import nodemailer from "nodemailer";
-import { z } from "zod";
 
 const router: IRouter = Router();
 
-const contactSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(1, "Message is required"),
-});
-
 router.post("/contact", async (req: Request, res: Response) => {
   try {
-    const { name, email, message } = contactSchema.parse(req.body);
+    const { name, email, message } = req.body;
+
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      return res.status(400).json({ error: "Name is required" });
+    }
+    if (!email || typeof email !== 'string' || !/^\S+@\S+\.\S+$/.test(email)) {
+      return res.status(400).json({ error: "Invalid email address" });
+    }
+    if (!message || typeof message !== 'string' || message.trim() === '') {
+      return res.status(400).json({ error: "Message is required" });
+    }
 
     const user = process.env.GMAIL_USER;
     const pass = process.env.GMAIL_PASS;
@@ -52,9 +55,6 @@ router.post("/contact", async (req: Request, res: Response) => {
     return res.status(200).json({ success: true, message: "Email sent successfully!" });
   } catch (error: any) {
     console.error("Error sending email:", error);
-    if (error instanceof z.ZodError) {
-      return res.status(400).json({ error: error.errors[0].message });
-    }
     return res.status(500).json({ error: "Failed to send email. Please try again later." });
   }
 });

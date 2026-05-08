@@ -27,16 +27,23 @@ export default function Contact() {
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6">
                 Let's build something <span className="text-primary">together.</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-10">
-                Whether you have a specific project in mind or just want to say hi, I'm always open to discussing new opportunities.
-              </p>
+
+              <div className="mb-10">
+                <h3 className="text-xl font-bold text-foreground mb-3">Why hire me?</h3>
+                <p className="text-muted-foreground mb-4">
+                  I combine product thinking, AI-powered workflows, and rapid execution to design, build, and deploy products in hours — not weeks.
+                </p>
+                <p className="text-muted-foreground">
+                  Unlike traditional designers, I don’t stop at mockups. I iterate continuously, manage deployments seamlessly, and create user-centric experiences backed by technology and real-world validation.
+                </p>
+              </div>
 
               <div className="space-y-6 mb-12">
-                <a href="mailto:hello@karthink.com" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors w-fit group">
+                <a href="mailto:karthikburra2211@gmail.com" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors w-fit group">
                   <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-lg font-medium">hello@karthink.com</span>
+                  <span className="text-lg font-medium">karthikburra2211@gmail.com</span>
                 </a>
               </div>
 
@@ -68,20 +75,65 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={async (e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+                const originalText = submitBtn.innerHTML;
+                
+                try {
+                  submitBtn.innerHTML = 'Sending...';
+                  submitBtn.disabled = true;
+                  
+                  const formData = new FormData(form);
+                  const data = Object.fromEntries(formData.entries());
+                  
+                  const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                  });
+                  
+                  if (!response.ok) {
+                    const result = await response.json();
+                    throw new Error(result.error || 'Failed to send message');
+                  }
+                  
+                  submitBtn.innerHTML = 'Sent Successfully ✓';
+                  submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                  form.reset();
+                  
+                  setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                  }, 3000);
+                  
+                } catch (error: any) {
+                  console.error(error);
+                  submitBtn.innerHTML = 'Failed to Send ✕';
+                  submitBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+                  
+                  setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                  }, 3000);
+                }
+              }}>
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
-                  <Input id="name" placeholder="John Doe" className="bg-background/50 h-12 rounded-xl border-border" />
+                  <Input id="name" name="name" placeholder="John Doe" className="bg-background/50 h-12 rounded-xl border-border" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
-                  <Input id="email" type="email" placeholder="john@example.com" className="bg-background/50 h-12 rounded-xl border-border" />
+                  <Input id="email" name="email" type="email" placeholder="john@example.com" className="bg-background/50 h-12 rounded-xl border-border" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
-                  <Textarea id="message" placeholder="Tell me about your project..." className="bg-background/50 min-h-[120px] rounded-xl border-border resize-none" />
+                  <Textarea id="message" name="message" placeholder="Tell me about your project..." className="bg-background/50 min-h-[120px] rounded-xl border-border resize-none" required />
                 </div>
-                <Button className="w-full h-12 rounded-xl text-base" data-testid="button-submit-contact">
+                <Button type="submit" className="w-full h-12 rounded-xl text-base transition-colors duration-300" data-testid="button-submit-contact">
                   Send Message <Send className="w-4 h-4 ml-2" />
                 </Button>
               </form>

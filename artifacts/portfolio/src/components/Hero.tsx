@@ -1,35 +1,22 @@
 import { motion } from 'framer-motion';
-import heroImage from '../assets/hero-image.png';
+import heroIllustration from '../assets/hero-illustration.png';
 
 export default function Hero() {
-  const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToWork = () => {
-    document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section id="home" className="relative w-full overflow-hidden bg-background pt-16">
-
-      {/* Full-width hero image */}
+    <section id="home" className="relative w-full overflow-hidden bg-white pt-20">
       <motion.div
-        className="relative w-full"
+        className="w-full relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.9 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
         <img
-          src={heroImage}
-          alt="Karthik — Product Designer"
+          src={heroIllustration}
+          alt="Karthik Burra — Product Designer Who Ships"
           className="w-full h-auto block"
-          data-testid="img-hero-avatar"
+          data-testid="hero-illustration"
         />
-
       </motion.div>
-
-
     </section>
   );
 }

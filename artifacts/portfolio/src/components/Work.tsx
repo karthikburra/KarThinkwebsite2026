@@ -7,11 +7,22 @@ import proj1 from '../assets/project-1.png';
 import proj2 from '../assets/project-2.png';
 import proj3 from '../assets/project-3.png';
 import proj4 from '../assets/project-4.png';
+import ideationImg from '../assets/product-ideation.png';
 
 export default function Work() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   const projects = [
+    {
+      id: 0,
+      title: "Product Ideation Tool",
+      category: "Portfolio Team",
+      desc: "Data-driven product selection tool for early-stage opportunity identification.",
+      image: ideationImg,
+      fullDesc: "Transforming product selection to launch at Dr.reddy’s by data-driven decision-making early in the process. Empowering teams to identify high-potential opportunities faster and with greater clarity\n\nReduced cognitive load by optimising information architecture and applying user research, journey mapping, and task flows to simplify complex, data‐heavy content.\n\nImproved adoption and scalability by minimising clicks through data‐driven design decisions and expanding personas to Market and BD teams for faster opportunity identification.",
+      role: "Lead Product Designer",
+      timeline: "6 Months"
+    },
     {
       id: 1,
       title: "Elevate UI Kit",
@@ -144,7 +155,7 @@ export default function Work() {
                         {p.category}
                       </div>
                       <h3 className="text-3xl font-bold text-foreground mb-6 font-serif">{p.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed mb-8">
+                      <p className="text-muted-foreground leading-relaxed mb-8 whitespace-pre-line">
                         {p.fullDesc}
                       </p>
                       

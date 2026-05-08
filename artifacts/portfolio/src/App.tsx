@@ -2,32 +2,28 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ExpertiseBanner from '@/components/ExpertiseBanner';
-import About from '@/components/About';
-import Disciplines from '@/components/Disciplines';
-import Work from '@/components/Work';
-import Process from '@/components/Process';
+import ExpertiseCards from '@/components/ExpertiseCards';
+import SelectedProjects from '@/components/SelectedProjects';
 import Skills from '@/components/Skills';
-import Stats from '@/components/Stats';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import ChatBot from '@/components/ChatBot';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="light">
-      <div className="min-h-[100dvh] bg-background text-foreground font-sans">
+    <ThemeProvider>
+      <div className="min-h-screen bg-background font-sans antialiased">
         <Navbar />
         <main>
           <Hero />
           <ExpertiseBanner />
-          <About />
-          <Disciplines />
-          <Work />
-          <Process />
+          <ExpertiseCards />
+          <SelectedProjects />
           <Skills />
-          <Stats />
           <Contact />
         </main>
         <Footer />
+        <ChatBot />
       </div>
     </ThemeProvider>
   );

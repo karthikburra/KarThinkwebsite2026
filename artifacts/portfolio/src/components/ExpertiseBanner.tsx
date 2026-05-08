@@ -1,4 +1,4 @@
-import { Layout, Home, PenTool, Lightbulb, Compass, Users } from 'lucide-react';
+import { Layout, Home, PenTool, Lightbulb, Compass, Users, Sparkle } from 'lucide-react';
 
 const expertise = [
   { icon: <Layout size={20} />, label: 'UIUX Designer' },
@@ -7,6 +7,7 @@ const expertise = [
   { icon: <Users size={20} />, label: 'Design Thinking Workshops' },
   { icon: <PenTool size={20} />, label: 'Visual Designer' },
   { icon: <Lightbulb size={20} />, label: 'Architect' },
+  { icon: <Sparkle size={20} />, label: 'AI-first designer' },
 ];
 
 const Item = ({ icon, label }: { icon: React.ReactNode; label: string }) => (

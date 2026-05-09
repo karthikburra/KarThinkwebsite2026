@@ -276,15 +276,13 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
             </div>
           )}
 
-          {/* Confidential lock overlay — always visible */}
+          {/* Confidential lock badge — small corner indicator */}
           {project.isConfidential && (
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-white/10 border border-white/30 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <p className="text-white text-[10px] font-bold tracking-widest uppercase">Confidential</p>
+            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span className="text-white text-[9px] font-bold tracking-widest uppercase">Confidential</span>
             </div>
           )}
 
@@ -343,7 +341,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
               onClick={(e) => { e.stopPropagation(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
               className="inline-flex items-center gap-2 mt-4 text-[10px] font-bold text-primary uppercase tracking-widest hover:gap-3 transition-all"
             >
-              Contact me for access →
+              Contact me to know more →
             </a>
           )}
         </div>

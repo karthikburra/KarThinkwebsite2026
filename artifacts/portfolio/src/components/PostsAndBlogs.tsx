@@ -22,7 +22,8 @@ const posts: BlogPost[] = [
     date: "April 28, 2024",
     category: "Space Design",
     link: "https://www.linkedin.com/posts/karthik-burra-75a326a1_cphi-dreddys-pharmacueticals-activity-7123739260402249729-xRz7",
-    thumbnail: cphiThumb
+    thumbnail: cphiThumb,
+    embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7123739260402249729?compact=1"
   },
   {
     id: 3,
@@ -83,7 +84,7 @@ export default function PostsAndBlogs() {
               transition={{ delay: index * 0.1 }}
               className="group bg-card border border-border/50 rounded-[2.5rem] overflow-hidden hover:shadow-2xl transition-all duration-500"
             >
-              <div className="aspect-video w-full bg-muted overflow-hidden relative">
+              <div className={`w-full overflow-hidden relative ${post.embedUrl ? 'h-[399px]' : 'aspect-video bg-muted'}`}>
                 {post.embedUrl ? (
                   <iframe
                     src={post.embedUrl}

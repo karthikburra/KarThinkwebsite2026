@@ -12,7 +12,7 @@ import ChatBot from '@/components/ChatBot';
 import PostsAndBlogs from '@/components/PostsAndBlogs';
 
 function App() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(true);
 
   return (
     <ThemeProvider>

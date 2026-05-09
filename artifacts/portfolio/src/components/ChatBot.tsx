@@ -105,8 +105,8 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
             {/* Header */}
             <div className="p-6 bg-primary text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                  <User className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center backdrop-blur-sm overflow-hidden p-1">
+                  <img src="/favicon.png" alt="Profile" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm">Karthik</h3>

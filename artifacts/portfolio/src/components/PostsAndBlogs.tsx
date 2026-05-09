@@ -20,8 +20,8 @@ const posts: BlogPost[] = [
     excerpt: "Designing a stall for Dr. Reddy's Active Pharmaceutical Ingredients (API) at CPHI Worldwide 2023.",
     date: "April 28, 2024",
     category: "Space Design",
-    link: "#",
-    embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7123739260402249729?compact=1"
+    link: "https://www.linkedin.com/posts/karthik-burra-75a326a1_cphi-dreddys-pharmacueticals-activity-7123739260402249729-xRz7",
+    thumbnail: "https://media.licdn.com/dms/image/v2/D5622AQF_jf0PVHkppQ/feedshare-shrink_800/feedshare-shrink_800/0/1697999614680?e=2147483647&v=beta&t=u8eFc0tB11v08iQvX0p0YL9IGVDM9mkSfxNM7v5I2Yg"
   },
   {
     id: 3,

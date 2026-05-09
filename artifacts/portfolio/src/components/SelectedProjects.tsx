@@ -152,6 +152,11 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       onClick={() => {
+        // If the project has both gallery and external link, require explicit button click
+        if (project.externalUrl && project.images.length > 1) {
+          return;
+        }
+
         if (project.externalUrl && project.images.length <= 1) {
           window.open(project.externalUrl, '_blank');
         } else {

@@ -99,7 +99,7 @@ const projects: Project[] = [
     id: 5,
     images: [collage7, bank1, bank2, bank3, bank4, bank5],
     title: "Digital Banking Ecosystem",
-    category: "UI/UX Design",
+    category: "Design task",
     description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows.",
     externalUrl: "https://tpbank.vercel.app/"
   },
@@ -145,73 +145,124 @@ const projects: Project[] = [
 ];
 
 function ProjectCard({ project, onClick }: { project: Project, onClick: () => void }) {
+  const [mobileSheetOpen, setMobileSheetOpen] = React.useState(false);
+  const hasDualActions = !!(project.externalUrl && project.images.length > 1);
+
   return (
-    <motion.div
-      className="relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border border-border/50 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 mb-8"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      onClick={() => {
-        // If the project has both gallery and external link, require explicit button click
-        if (project.externalUrl && project.images.length > 1) {
-          return;
-        }
-
-        if (project.externalUrl && project.images.length <= 1) {
-          window.open(project.externalUrl, '_blank');
-        } else {
-          onClick();
-        }
-      }}
-    >
-      <div className="relative overflow-hidden">
-        {project.videoUrl ? (
-          <div className="w-full aspect-video pointer-events-none">
-            <iframe
-              src={`${project.videoUrl}&autoplay=1`}
-              className="w-full h-full border-0"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              title={project.title}
-            />
-          </div>
-        ) : (
-          <img
-            src={project.images[0]}
-            alt={project.title}
-            className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-          />
-        )}
-
-        {/* Subtle indicator for multiple images */}
-        {project.images.length > 1 && (
-          <div className="absolute top-4 right-4 bg-black/20 backdrop-blur-md p-2 rounded-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Layers className="w-4 h-4" />
-          </div>
-        )}
-
-        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-3">
-          {project.externalUrl && project.images.length > 1 ? (
-            <>
-              <button 
-                onClick={(e) => { e.stopPropagation(); onClick(); }}
-                className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+    <>
+      {/* Mobile action bottom sheet */}
+      {hasDualActions && mobileSheetOpen && (
+        <div
+          className="fixed inset-0 z-[300] flex items-end justify-center bg-black/50 backdrop-blur-sm md:hidden"
+          onClick={() => setMobileSheetOpen(false)}
+        >
+          <div
+            className="w-full bg-white rounded-t-3xl p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-10 h-1 bg-border rounded-full mx-auto mb-6" />
+            <h4 className="text-base font-bold text-foreground mb-1 text-center">{project.title}</h4>
+            <p className="text-xs text-muted-foreground text-center mb-6">Choose an action</p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => { setMobileSheetOpen(false); onClick(); }}
+                className="w-full py-4 rounded-2xl bg-foreground text-background font-bold text-sm uppercase tracking-widest"
               >
                 Explore Gallery
               </button>
-              <button 
-                onClick={(e) => { e.stopPropagation(); window.open(project.externalUrl, '_blank'); }}
-                className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+              <button
+                onClick={() => { setMobileSheetOpen(false); window.open(project.externalUrl, '_blank'); }}
+                className="w-full py-4 rounded-2xl border-2 border-primary text-primary font-bold text-sm uppercase tracking-widest"
               >
                 Visit Website
               </button>
-            </>
+              <button
+                onClick={() => setMobileSheetOpen(false)}
+                className="w-full py-3 rounded-2xl text-muted-foreground text-sm"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <motion.div
+        className="relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border border-border/50 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        onClick={() => {
+          if (hasDualActions) {
+            setMobileSheetOpen(true);
+            return;
+          }
+          if (project.externalUrl && project.images.length <= 1) {
+            window.open(project.externalUrl, '_blank');
+          } else {
+            onClick();
+          }
+        }}
+      >
+        <div className="relative overflow-hidden">
+          {project.videoUrl ? (
+            <div className="w-full aspect-video pointer-events-none">
+              <iframe
+                src={`${project.videoUrl}&autoplay=1`}
+                className="w-full h-full border-0"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title={project.title}
+              />
+            </div>
           ) : (
-            <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500 pointer-events-none">
-              {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
-            </span>
+            <img
+              src={project.images[0]}
+              alt={project.title}
+              className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
+
+          {/* Subtle indicator for multiple images */}
+          {project.images.length > 1 && (
+            <div className="absolute top-4 right-4 bg-black/20 backdrop-blur-md p-2 rounded-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Layers className="w-4 h-4" />
+            </div>
+          )}
+
+          {/* Desktop hover overlay — hidden on mobile */}
+          <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col items-center justify-center gap-3 hidden md:flex">
+            {hasDualActions ? (
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); onClick(); }}
+                  className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+                >
+                  Explore Gallery
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); window.open(project.externalUrl, '_blank'); }}
+                  className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+                >
+                  Visit Website
+                </button>
+              </>
+            ) : (
+              <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500 pointer-events-none">
+                {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
+              </span>
+            )}
+          </div>
+
+          {/* Mobile-only "tap" hint for non-dual projects */}
+          {!hasDualActions && (
+            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center md:hidden">
+              <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg">
+                {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
+              </span>
+            </div>
           )}
         </div>
-      </div>
+
 
       <div className="p-6 md:p-8 bg-white border-t border-border/30">
         <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">
@@ -227,6 +278,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
         )}
       </div>
     </motion.div>
+  </>
   );
 }
 

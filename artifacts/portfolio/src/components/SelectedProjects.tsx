@@ -169,7 +169,7 @@ const projects: Project[] = [
     id: 10,
     images: [info5],
     title: "Finance Dashboards",
-    category: "Visual Systems",
+    category: "Visual Systems, Analytical Dashboards ",
     description: "Comprehensive Overview As-is Journey. Translating complex financial data into intuitive visual interfaces."
   },
 

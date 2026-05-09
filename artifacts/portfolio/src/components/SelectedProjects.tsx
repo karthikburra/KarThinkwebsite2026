@@ -34,7 +34,7 @@ import off2 from '../assets/Officein_2.jpg'
 import off3 from '../assets/Officein_3.jpg'
 import off4 from '../assets/Officein_4.jpg'
 import off5 from '../assets/Office_5.png'
-import CA1 from '../assets/CA website.jpg'
+import CA1 from '../assets/CA website.JPG'
 import DS1 from '../assets/DS (1).png'
 import DS2 from '../assets/DS (2).png'
 import DS3 from '../assets/DS (3).png'
@@ -152,7 +152,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       onClick={() => {
-        if (project.externalUrl) {
+        if (project.externalUrl && project.images.length <= 1) {
           window.open(project.externalUrl, '_blank');
         } else {
           onClick();
@@ -184,10 +184,27 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
           </div>
         )}
 
-        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-          <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500">
-            {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
-          </span>
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-3">
+          {project.externalUrl && project.images.length > 1 ? (
+            <>
+              <button 
+                onClick={(e) => { e.stopPropagation(); onClick(); }}
+                className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+              >
+                Explore Gallery
+              </button>
+              <button 
+                onClick={(e) => { e.stopPropagation(); window.open(project.externalUrl, '_blank'); }}
+                className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+              >
+                Visit Website
+              </button>
+            </>
+          ) : (
+            <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500 pointer-events-none">
+              {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
+            </span>
+          )}
         </div>
       </div>
 

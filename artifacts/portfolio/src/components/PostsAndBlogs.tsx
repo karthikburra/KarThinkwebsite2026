@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Calendar, MessageSquare, Heart } from 'lucide-react';
+import { ExternalLink, Calendar } from 'lucide-react';
+import cphiThumb from '../assets/CPHI_3.png';
 
 interface BlogPost {
   id: number;
@@ -21,7 +22,7 @@ const posts: BlogPost[] = [
     date: "April 28, 2024",
     category: "Space Design",
     link: "https://www.linkedin.com/posts/karthik-burra-75a326a1_cphi-dreddys-pharmacueticals-activity-7123739260402249729-xRz7",
-    thumbnail: "https://media.licdn.com/dms/image/v2/D5622AQF_jf0PVHkppQ/feedshare-shrink_800/feedshare-shrink_800/0/1697999614680?e=2147483647&v=beta&t=u8eFc0tB11v08iQvX0p0YL9IGVDM9mkSfxNM7v5I2Yg"
+    thumbnail: cphiThumb
   },
   {
     id: 3,

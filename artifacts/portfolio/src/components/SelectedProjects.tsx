@@ -352,7 +352,7 @@ export default function SelectedProjects() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-background overflow-hidden">
+    <section id="projects" className="py-24 bg-slate-50 overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 mb-16 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

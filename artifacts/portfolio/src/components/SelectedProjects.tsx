@@ -22,20 +22,20 @@ import CPHI5 from '../assets/CPHI_4.png';
 import CPHI6 from '../assets/CPHI_IM1.jpg';
 import CPHI7 from '../assets/CPHI_IM2.jpg';
 import Mind1 from '../assets/Mind_1.png'
-import Mind2 from '../assets/Mind_2.jpg'
-import Mind3 from '../assets/Mind_3.jpg'
-import Mind4 from '../assets/Mind_4.jpg'
-import Mind5 from '../assets/Mind_5.jpg'
-import Mind6 from '../assets/Mind_6.jpg'
-import Mind7 from '../assets/Mind_7.jpg'
-import Mind8 from '../assets/Mind_8.jpg'
-import Mind9 from '../assets/Mind_9.jpg'
-import Mind10 from '../assets/Mind_10.jpg'
-import Mind11 from '../assets/Mind_11.jpg'
-import Mind12 from '../assets/Mind_12.jpg'
-import Mind13 from '../assets/Mind_13.jpg'
-import Mind14 from '../assets/Mind_14.jpg'
-import Mind15 from '../assets/Mind_15.jpg'
+import Mind2 from '../assets/Mind_2.JPG'
+import Mind3 from '../assets/Mind_3.JPG'
+import Mind4 from '../assets/Mind_4.JPG'
+import Mind5 from '../assets/Mind_5.JPG'
+import Mind6 from '../assets/Mind_6.JPG'
+import Mind7 from '../assets/Mind_7.JPG'
+import Mind8 from '../assets/Mind_8.JPG'
+import Mind9 from '../assets/Mind_9.JPG'
+import Mind10 from '../assets/Mind_10.JPG'
+import Mind11 from '../assets/Mind_11.JPG'
+import Mind12 from '../assets/Mind_12.JPG'
+import Mind13 from '../assets/Mind_13.JPG'
+import Mind14 from '../assets/Mind_14.JPG'
+import Mind15 from '../assets/Mind_15.JPG'
 import TR1 from '../assets/TR1.png'
 
 
@@ -137,7 +137,7 @@ const projects: Project[] = [
     images: [TR1],
     title: "Terrace garden",
     category: "Visual system",
-    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows.",
+    description: "This terrace garden is a personal ecological study, documenting biodiversity responses to small scale urban gardening practices.",
 
   },
 
@@ -232,9 +232,8 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       )}
 
       <motion.div
-        className={`relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8 ${
-          project.isConfidential ? 'cursor-default' : 'cursor-pointer'
-        }`}
+        className={`relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8 ${project.isConfidential ? 'cursor-default' : 'cursor-pointer'
+          }`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -341,7 +340,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
               onClick={(e) => { e.stopPropagation(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
               className="inline-flex items-center gap-2 mt-4 text-[10px] font-bold text-primary uppercase tracking-widest hover:gap-3 transition-all"
             >
-              Contact me to know more →
+              Connect to know more →
             </a>
           )}
         </div>

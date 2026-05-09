@@ -9,14 +9,14 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-32 bg-background relative">
       <div className="container mx-auto px-6">
-        
+
         <div className="max-w-5xl mx-auto bg-card border border-border rounded-[3rem] p-8 md:p-16 shadow-2xl relative overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
 
           <div className="grid md:grid-cols-2 gap-16 relative z-10">
-            
+
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -24,13 +24,13 @@ export default function Contact() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6">
-                Let's build something <span className="text-primary">together.</span>
+                Let's <span className="text-primary">connect.</span>
               </h2>
 
               <div className="mb-10">
-                <h3 className="text-xl font-bold text-foreground mb-3">Why hire me?</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">What I Bring to the Team</h3>
                 <p className="text-muted-foreground mb-4">
-                  I combine product thinking, AI-powered workflows, and rapid execution to design, build, and deploy products in hours — not weeks.
+                  I combine product thinking, AI-powered workflows, and rapid execution to design, build, and deploy products in hours-not weeks.
                 </p>
                 <p className="text-muted-foreground">
                   Unlike traditional designers, I don’t stop at mockups. I iterate continuously, manage deployments seamlessly, and create user-centric experiences backed by technology and real-world validation.
@@ -50,9 +50,9 @@ export default function Contact() {
                 <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4">Connect</p>
                 <div className="flex gap-4">
                   {[
-                    { icon: <Linkedin className="w-5 h-5" />, href: "#" },
+                    { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/karthik-burra-75a326a1/" },
                   ].map((social, i) => (
-                    <a 
+                    <a
                       key={i}
                       href={social.href}
                       className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
@@ -77,40 +77,40 @@ export default function Contact() {
                 const form = e.currentTarget;
                 const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
                 const originalText = submitBtn.innerHTML;
-                
+
                 try {
                   submitBtn.innerHTML = 'Sending...';
                   submitBtn.disabled = true;
-                  
+
                   const formData = new FormData(form);
                   const data = Object.fromEntries(formData.entries());
-                  
+
                   const response = await fetch('/api/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                   });
-                  
+
                   if (!response.ok) {
                     const result = await response.json();
                     throw new Error(result.error || 'Failed to send message');
                   }
-                  
+
                   submitBtn.innerHTML = 'Sent Successfully ✓';
                   submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
                   form.reset();
-                  
+
                   setTimeout(() => {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
                   }, 3000);
-                  
+
                 } catch (error: any) {
                   console.error(error);
                   submitBtn.innerHTML = 'Failed to Send ✕';
                   submitBtn.classList.add('bg-red-600', 'hover:bg-red-700');
-                  
+
                   setTimeout(() => {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;

@@ -23,8 +23,7 @@ const suggestedQuestions = [
   { text: "How do you approach projects?", key: 'approach' }
 ];
 
-export default function ChatBot() {
-  const [isOpen, setIsOpen] = useState(true); // Open automatically on load
+export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (open: boolean) => void }) {
   const [askedKeys, setAskedKeys] = useState<string[]>([]);
   const [messages, setMessages] = useState<Message[]>([
     {

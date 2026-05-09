@@ -14,12 +14,35 @@ import Frame1 from '../assets/Frame-1.png';
 import Frame2 from '../assets/Frame-2.png';
 import Frame3 from '../assets/Frame-3.png';
 import Frame4 from '../assets/Frame-4.png';
+import CPHI1 from '../assets/CPHI1.png';
+import CPHI2 from '../assets/CPHI_1.png';
+import CPHI3 from '../assets/CPHI_2.png';
+import CPHI4 from '../assets/CPHI_3.png';
+import CPHI5 from '../assets/CPHI_4.png';
+import CPHI6 from '../assets/CPHI_IM1.jpg';
+import CPHI7 from '../assets/CPHI_IM2.jpg';
+import Mind1 from '../assets/Mind_1.png'
+import Air1 from '../assets/Air_1.png'
+import bank1 from '../assets/Bank_1.png'
+import bank2 from '../assets/Bank_2.png'
+import bank3 from '../assets/Bank_3.png'
+import bank4 from '../assets/Bank_4.png'
+import bank5 from '../assets/Bank_5.png'
+import Work1 from '../assets/Workshop_1.jpg'
+import cog1 from '../assets/Cog_1.png'
+import off2 from '../assets/Officein_2.jpg'
+import off3 from '../assets/Officein_3.jpg'
+import off4 from '../assets/Officein_4.jpg'
+import off5 from '../assets/Office_5.png'
+
+
 
 
 
 interface Project {
   id: number;
   images: string[];
+  videoUrl?: string;
   title: string;
   category: string;
   description?: string;
@@ -29,60 +52,79 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    images: [collage2],
-    title: " Residential building ",
-    category: "Architecture",
-    description: "A series of minimalist residential designs focusing on geometry, materiality, and the interplay of natural light."
-  },
-  {
-    id: 2,
-    images: [info2, collage6],
-    title: "AI Assisted Product Selection",
-    category: "Visual Systems",
-    description: "Reshaping product selection process by data driven decision transform making early in the process."
-  },
-  {
-    id: 3,
-    images: [info3, collage2],
+    images: [info3],
     title: "Design System Framework",
     category: "Design Systems",
     description: "Design flows in loop not lines. Creating cohesive visual languages for complex digital ecosystems."
   },
   {
-    id: 4,
-    images: [collage6],
-    title: "Corporate Workspaces",
-    category: "Corporate Interior",
-    description: "Modern office interiors designed for collaboration, emphasizing Dr. Reddy's brand identity and employee well-being."
+    id: 2,
+    images: [Mind1],
+    title: "Mindfluential trading",
+    category: "UIUX design",
+    description: "Owning the project end-to-end from project planning, user research, ideation, information architecture, wireframing, and visual design to managing the development process, timelines, and client requirements to ensure successful delivery."
   },
+  {
+    id: 3,
+    images: [info2, cog1],
+    title: "AI Assisted Product Selection",
+    category: "Visual Systems,UIUX design",
+    description: "Reshaping product selection process by data driven decision transform making early in the process."
+
+  },
+
+  {
+    id: 4,
+    images: [collage7, bank1, bank2, bank3, bank4, bank5],
+    title: "Digital Banking Ecosystem",
+    category: "UI/UX Design",
+    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows."
+  },
+
   {
     id: 5,
-    images: [info4],
-    title: "Terrace Garden: Biodiversity Response",
-    category: "Research",
-    description: "Documenting biodiversity responses to small scale urban gardening practices through meticulous data collection."
+    images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
+    title: "CPHI- Booth design",
+    category: "Space design",
+    description: "A comprehensive showcase of exhibition design, featuring innovative spatial arrangements and brand-centric environments."
   },
+
+
+
   {
     id: 6,
+    images: [Air1],
+    title: "Airbnb Group booking feature",
+    category: "Casestudy",
+    description: "To find the pain points and frustration faced by the users while planning for group trips from their previous experiences"
+  },
+
+  {
+    id: 7,
+    images: [Work1],
+    title: "Design thinking worksops",
+    category: "Workshops",
+    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows."
+  },
+
+
+  {
+    id: 8,
+    images: [collage6, off2, off3, off4, off5],
+    title: "Corporate Workspaces",
+    category: "Interior design",
+    description: "Modern office interiors designed for collaboration, emphasizing Dr. Reddy's brand identity and employee well-being."
+  },
+
+  {
+    id: 9,
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems",
     description: "Comprehensive Overview As-is Journey. Translating complex financial data into intuitive visual interfaces."
   },
-  {
-    id: 7,
-    images: [collage7],
-    title: "Digital Banking Ecosystem",
-    category: "UI/UX Design",
-    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows."
-  },
-  {
-    id: 8,
-    images: [Frame1, Frame2, Frame3, Frame4],
-    title: "CPHI- Booth design",
-    category: "Space design",
-    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows."
-  }
+
+
 ];
 
 function ProjectCard({ project, onClick }: { project: Project, onClick: () => void }) {
@@ -95,12 +137,22 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       onClick={onClick}
     >
       <div className="relative overflow-hidden">
-        {/* Only show the first image on the tile, no auto-change */}
-        <img
-          src={project.images[0]}
-          alt={project.title}
-          className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-        />
+        {project.videoUrl ? (
+          <div className="w-full aspect-video pointer-events-none">
+            <iframe
+              src={`${project.videoUrl}&autoplay=1`}
+              className="w-full h-full border-0"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title={project.title}
+            />
+          </div>
+        ) : (
+          <img
+            src={project.images[0]}
+            alt={project.title}
+            className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
 
         {/* Subtle indicator for multiple images */}
         {project.images.length > 1 && (
@@ -139,10 +191,12 @@ export default function SelectedProjects() {
 
   // Auto-slideshow in the modal every 6 seconds
   useEffect(() => {
-    if (!activeProject || activeProject.images.length <= 1) return;
+    if (!activeProject) return;
+    const totalItems = activeProject.videoUrl ? activeProject.images.length + 1 : activeProject.images.length;
+    if (totalItems <= 1) return;
 
     const interval = setInterval(() => {
-      setModalIndex((prev) => (prev + 1) % activeProject.images.length);
+      setModalIndex((prev) => (prev + 1) % totalItems);
     }, 6000);
 
     return () => clearInterval(interval);
@@ -150,12 +204,14 @@ export default function SelectedProjects() {
 
   const nextImage = () => {
     if (!activeProject) return;
-    setModalIndex((prev) => (prev + 1) % activeProject.images.length);
+    const totalItems = activeProject.videoUrl ? activeProject.images.length + 1 : activeProject.images.length;
+    setModalIndex((prev) => (prev + 1) % totalItems);
   };
 
   const prevImage = () => {
     if (!activeProject) return;
-    setModalIndex((prev) => (prev - 1 + activeProject.images.length) % activeProject.images.length);
+    const totalItems = activeProject.videoUrl ? activeProject.images.length + 1 : activeProject.images.length;
+    setModalIndex((prev) => (prev - 1 + totalItems) % totalItems);
   };
 
   return (
@@ -170,7 +226,7 @@ export default function SelectedProjects() {
             Selected <span className="text-primary">Projects.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A dynamic showcase of multi-disciplinary work. Click a project to explore its full high-fidelity gallery.
+            A dynamic showcase of multi-disciplinary work. Click a project to explore its full gallery.
           </p>
         </motion.div>
       </div>
@@ -232,16 +288,34 @@ export default function SelectedProjects() {
             >
               <div className="relative w-full flex-1 flex items-center justify-center mb-12 overflow-hidden">
                 <AnimatePresence mode="wait">
-                  <motion.img
-                    key={activeProject.images[modalIndex]}
-                    src={activeProject.images[modalIndex]}
-                    alt={activeProject.title}
-                    className="max-w-full max-h-full object-contain shadow-[0_32px_64px_-12px_rgba(0,0,0,0.3)] rounded-xl"
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -40 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                  />
+                  {modalIndex === 0 && activeProject.videoUrl ? (
+                    <motion.div
+                      key="video"
+                      className="w-full h-full max-w-4xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                    >
+                      <iframe
+                        src={`${activeProject.videoUrl}&autoplay=1`}
+                        className="w-full h-full border-0"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        allowFullScreen
+                        title={activeProject.title}
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.img
+                      key={activeProject.images[activeProject.videoUrl ? modalIndex - 1 : modalIndex]}
+                      src={activeProject.images[activeProject.videoUrl ? modalIndex - 1 : modalIndex]}
+                      alt={activeProject.title}
+                      className="max-w-full max-h-full object-contain shadow-[0_32px_64px_-12px_rgba(0,0,0,0.3)] rounded-xl"
+                      initial={{ opacity: 0, x: 40 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -40 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    />
+                  )}
                 </AnimatePresence>
               </div>
 
@@ -258,9 +332,9 @@ export default function SelectedProjects() {
                   </p>
                 )}
 
-                {activeProject.images.length > 1 && (
+                {activeProject.videoUrl || activeProject.images.length > 1 ? (
                   <div className="flex justify-center gap-4 pb-4">
-                    {activeProject.images.map((_, i) => (
+                    {Array.from({ length: activeProject.videoUrl ? activeProject.images.length + 1 : activeProject.images.length }).map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setModalIndex(i)}
@@ -269,7 +343,7 @@ export default function SelectedProjects() {
                       />
                     ))}
                   </div>
-                )}
+                ) : null}
               </div>
             </motion.div>
           </motion.div>

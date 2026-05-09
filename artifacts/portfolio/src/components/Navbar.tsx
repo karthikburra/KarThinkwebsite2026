@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Heart } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
-export default function Navbar() {
+export default function Navbar({ onAboutClick }: { onAboutClick: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
@@ -17,6 +17,8 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Work', href: '#projects' },
+    { name: 'Posts', href: '#posts' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
@@ -58,7 +60,14 @@ export default function Navbar() {
             <a 
               key={link.name}
               href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
+              onClick={(e) => {
+                if (link.name === 'About') {
+                  e.preventDefault();
+                  onAboutClick();
+                } else {
+                  scrollToSection(e, link.href);
+                }
+              }}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               data-testid={`link-nav-${link.name.toLowerCase()}`}
             >
@@ -92,7 +101,15 @@ export default function Navbar() {
               <a 
                 key={link.name}
                 href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
+                onClick={(e) => {
+                  if (link.name === 'About') {
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                    onAboutClick();
+                  } else {
+                    scrollToSection(e, link.href);
+                  }
+                }}
                 className="text-2xl font-serif font-bold text-foreground hover:text-primary transition-colors"
               >
                 {link.name}

@@ -34,6 +34,18 @@ import off2 from '../assets/Officein_2.jpg'
 import off3 from '../assets/Officein_3.jpg'
 import off4 from '../assets/Officein_4.jpg'
 import off5 from '../assets/Office_5.png'
+import CA1 from '../assets/CA website.jpg'
+import DS1 from '../assets/DS (1).png'
+import DS2 from '../assets/DS (2).png'
+import DS3 from '../assets/DS (3).png'
+import DS4 from '../assets/DS (4).png'
+import DS5 from '../assets/DS (5).png'
+import DS6 from '../assets/DS (6).png'
+import DS7 from '../assets/DS (7).png'
+import DS8 from '../assets/DS (8).png'
+
+
+
 
 
 
@@ -43,6 +55,7 @@ interface Project {
   id: number;
   images: string[];
   videoUrl?: string;
+  externalUrl?: string;
   title: string;
   category: string;
   description?: string;
@@ -52,37 +65,47 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    images: [info3],
+    images: [info3, DS1, DS2, DS3, DS4, DS5, DS6, DS7, DS8],
     title: "Design System Framework",
     category: "Design Systems",
     description: "Design flows in loop not lines. Creating cohesive visual languages for complex digital ecosystems."
   },
+
   {
     id: 2,
+    images: [CA1],
+    title: "Website for CA firm",
+    category: "Design and development",
+    description: "Built and delivered in 3hrs",
+    externalUrl: "https://sr-jtaxglobal.vercel.app/"
+  },
+  {
+    id: 3,
     images: [Mind1],
     title: "Mindfluential trading",
     category: "UIUX design",
     description: "Owning the project end-to-end from project planning, user research, ideation, information architecture, wireframing, and visual design to managing the development process, timelines, and client requirements to ensure successful delivery."
   },
   {
-    id: 3,
+    id: 4,
     images: [info2, cog1],
     title: "AI Assisted Product Selection",
-    category: "Visual Systems,UIUX design",
+    category: "Visual Systems, UIUX design",
     description: "Reshaping product selection process by data driven decision transform making early in the process."
 
   },
 
   {
-    id: 4,
+    id: 5,
     images: [collage7, bank1, bank2, bank3, bank4, bank5],
     title: "Digital Banking Ecosystem",
     category: "UI/UX Design",
-    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows."
+    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows.",
+    externalUrl: "https://tpbank.vercel.app/"
   },
 
   {
-    id: 5,
+    id: 6,
     images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
     title: "CPHI- Booth design",
     category: "Space design",
@@ -91,13 +114,7 @@ const projects: Project[] = [
 
 
 
-  {
-    id: 6,
-    images: [Air1],
-    title: "Airbnb Group booking feature",
-    category: "Casestudy",
-    description: "To find the pain points and frustration faced by the users while planning for group trips from their previous experiences"
-  },
+
 
   {
     id: 7,
@@ -134,7 +151,13 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      onClick={onClick}
+      onClick={() => {
+        if (project.externalUrl) {
+          window.open(project.externalUrl, '_blank');
+        } else {
+          onClick();
+        }
+      }}
     >
       <div className="relative overflow-hidden">
         {project.videoUrl ? (
@@ -163,7 +186,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
 
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
           <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500">
-            {project.images.length > 1 ? "Explore Gallery" : "View Project"}
+            {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
           </span>
         </div>
       </div>

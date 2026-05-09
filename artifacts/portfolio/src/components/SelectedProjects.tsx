@@ -70,7 +70,7 @@ import DS5 from '../assets/DS (5).png'
 import DS6 from '../assets/DS (6).png'
 import DS7 from '../assets/DS (7).png'
 import DS8 from '../assets/DS (8).png'
-import CART1 from '../assets/CART.png'
+import CART1 from '../assets/CART.jpg'
 
 
 
@@ -228,7 +228,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       )}
 
       <motion.div
-        className="relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border border-border/50 cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 mb-8"
+        className="relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 cursor-pointer shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

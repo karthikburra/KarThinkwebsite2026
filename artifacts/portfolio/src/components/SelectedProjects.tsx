@@ -21,7 +21,7 @@ import CPHI4 from '../assets/CPHI_3.png';
 import CPHI5 from '../assets/CPHI_4.png';
 import CPHI6 from '../assets/CPHI_IM1.jpg';
 import CPHI7 from '../assets/CPHI_IM2.jpg';
-import Mind1 from '../assets/Mind_1.png'
+import Mind1 from '../assets/Mind_cover.png'
 import Mind2 from '../assets/Mind_2.jpg'
 import Mind3 from '../assets/Mind_3.jpg'
 import Mind4 from '../assets/Mind_4.jpg'
@@ -37,18 +37,6 @@ import Mind13 from '../assets/Mind_13.jpg'
 import Mind14 from '../assets/Mind_14.jpg'
 import Mind15 from '../assets/Mind_15.jpg'
 import TR1 from '../assets/TR1.png'
-
-
-
-
-
-
-
-
-
-
-
-
 import Air1 from '../assets/Air_1.png'
 import bank1 from '../assets/Bank_1.png'
 import bank2 from '../assets/Bank_2.png'

@@ -84,6 +84,7 @@ interface Project {
   images: string[];
   videoUrl?: string;
   externalUrl?: string;
+  isConfidential?: boolean;
   title: string;
   category: string;
   description?: string;
@@ -119,8 +120,8 @@ const projects: Project[] = [
     images: [info2, cog1],
     title: "AI Assisted Product Selection",
     category: "Visual Systems, UIUX design",
-    description: "Reshaping product selection process by data driven decision transform making early in the process."
-
+    description: "Reshaping product selection process by data driven decision transform making early in the process.",
+    isConfidential: true
   },
 
   {
@@ -153,7 +154,8 @@ const projects: Project[] = [
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
-    description: "Empowering leadership teams to navigate complexity through structured Design Thinking frameworks. I bridge the gap between high-level vision and user-centric innovation to drive measurable business outcomes."
+    description: "Empowering leadership teams to navigate complexity through structured Design Thinking frameworks. I bridge the gap between high-level vision and user-centric innovation to drive measurable business outcomes.",
+    isConfidential: true
   },
 
 
@@ -170,7 +172,8 @@ const projects: Project[] = [
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems, Analytical Dashboards ",
-    description: "Comprehensive Overview As-is Journey. Translating complex financial data into intuitive visual interfaces."
+    description: "Comprehensive Overview As-is Journey. Translating complex financial data into intuitive visual interfaces.",
+    isConfidential: true
   },
 
   {
@@ -178,7 +181,8 @@ const projects: Project[] = [
     images: [CART1],
     title: "CAR-T Cell Therapy",
     category: "System Design",
-    description: "A thorough understanding and capture of systems, teams, and people involved in the process, as well as identifying the complexities in each stage of the process"
+    description: "A thorough understanding and capture of systems, teams, and people involved in the process, as well as identifying the complexities in each stage of the process",
+    isConfidential: true
   },
 
 
@@ -228,11 +232,14 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       )}
 
       <motion.div
-        className="relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 cursor-pointer shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8"
+        className={`relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8 ${
+          project.isConfidential ? 'cursor-default' : 'cursor-pointer'
+        }`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         onClick={() => {
+          if (project.isConfidential) return;
           if (hasDualActions) {
             setMobileSheetOpen(true);
             return;
@@ -263,38 +270,52 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
           )}
 
           {/* Subtle indicator for multiple images */}
-          {project.images.length > 1 && (
+          {project.images.length > 1 && !project.isConfidential && (
             <div className="absolute top-4 right-4 bg-black/20 backdrop-blur-md p-2 rounded-xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <Layers className="w-4 h-4" />
             </div>
           )}
 
-          {/* Desktop hover overlay — hidden on mobile */}
-          <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col items-center justify-center gap-3 hidden md:flex">
-            {hasDualActions ? (
-              <>
-                <button
-                  onClick={(e) => { e.stopPropagation(); onClick(); }}
-                  className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
-                >
-                  Explore Gallery
-                </button>
-                <button
-                  onClick={(e) => { e.stopPropagation(); window.open(project.externalUrl, '_blank'); }}
-                  className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
-                >
-                  Visit Website
-                </button>
-              </>
-            ) : (
-              <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500 pointer-events-none">
-                {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
-              </span>
-            )}
-          </div>
+          {/* Confidential lock overlay — always visible */}
+          {project.isConfidential && (
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-white/10 border border-white/30 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <p className="text-white text-[10px] font-bold tracking-widest uppercase">Confidential</p>
+            </div>
+          )}
 
-          {/* Mobile-only "tap" hint for non-dual projects */}
-          {!hasDualActions && (
+          {/* Desktop hover overlay — hidden on mobile, not shown for confidential */}
+          {!project.isConfidential && (
+            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex-col items-center justify-center gap-3 hidden md:flex">
+              {hasDualActions ? (
+                <>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onClick(); }}
+                    className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+                  >
+                    Explore Gallery
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); window.open(project.externalUrl, '_blank'); }}
+                    className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 hover:scale-100 transition-transform duration-300 hover:bg-primary hover:text-white"
+                  >
+                    Visit Website
+                  </button>
+                </>
+              ) : (
+                <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-500 pointer-events-none">
+                  {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Mobile-only tap hint — not shown for confidential */}
+          {!hasDualActions && !project.isConfidential && (
             <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center md:hidden">
               <span className="bg-white/90 backdrop-blur-sm px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-foreground shadow-lg">
                 {project.externalUrl ? "Visit Website" : (project.images.length > 1 ? "Explore Gallery" : "View Project")}
@@ -315,6 +336,15 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
             <p className="text-sm text-muted-foreground line-clamp-2">
               {project.description}
             </p>
+          )}
+          {project.isConfidential && (
+            <a
+              href="#contact"
+              onClick={(e) => { e.stopPropagation(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="inline-flex items-center gap-2 mt-4 text-[10px] font-bold text-primary uppercase tracking-widest hover:gap-3 transition-all"
+            >
+              Contact me for access →
+            </a>
           )}
         </div>
       </motion.div>

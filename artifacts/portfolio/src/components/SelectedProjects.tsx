@@ -22,6 +22,33 @@ import CPHI5 from '../assets/CPHI_4.png';
 import CPHI6 from '../assets/CPHI_IM1.jpg';
 import CPHI7 from '../assets/CPHI_IM2.jpg';
 import Mind1 from '../assets/Mind_1.png'
+import Mind2 from '../assets/Mind_2.jpg'
+import Mind3 from '../assets/Mind_3.jpg'
+import Mind4 from '../assets/Mind_4.jpg'
+import Mind5 from '../assets/Mind_5.jpg'
+import Mind6 from '../assets/Mind_6.jpg'
+import Mind7 from '../assets/Mind_7.jpg'
+import Mind8 from '../assets/Mind_8.jpg'
+import Mind9 from '../assets/Mind_9.jpg'
+import Mind10 from '../assets/Mind_10.jpg'
+import Mind11 from '../assets/Mind_11.jpg'
+import Mind12 from '../assets/Mind_12.jpg'
+import Mind13 from '../assets/Mind_13.jpg'
+import Mind14 from '../assets/Mind_14.jpg'
+import Mind15 from '../assets/Mind_15.jpg'
+import TR1 from '../assets/TR1.png'
+
+
+
+
+
+
+
+
+
+
+
+
 import Air1 from '../assets/Air_1.png'
 import bank1 from '../assets/Bank_1.png'
 import bank2 from '../assets/Bank_2.png'
@@ -43,6 +70,7 @@ import DS5 from '../assets/DS (5).png'
 import DS6 from '../assets/DS (6).png'
 import DS7 from '../assets/DS (7).png'
 import DS8 from '../assets/DS (8).png'
+import CART1 from '../assets/CART.png'
 
 
 
@@ -81,7 +109,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    images: [Mind1],
+    images: [Mind1, Mind2, Mind3, Mind4, Mind5, Mind6, Mind7, Mind8, Mind9, Mind10, Mind11, Mind12, Mind13, Mind14, Mind15],
     title: "Mindfluential trading",
     category: "UIUX design",
     description: "Owning the project end-to-end from project planning, user research, ideation, information architecture, wireframing, and visual design to managing the development process, timelines, and client requirements to ensure successful delivery."
@@ -103,21 +131,25 @@ const projects: Project[] = [
     description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows.",
     externalUrl: "https://tpbank.vercel.app/"
   },
-
   {
     id: 6,
+    images: [TR1],
+    title: "Terrace garden",
+    category: "Visual system",
+    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows.",
+
+  },
+
+  {
+    id: 7,
     images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
     title: "CPHI- Booth design",
     category: "Space design",
     description: "A comprehensive showcase of exhibition design, featuring innovative spatial arrangements and brand-centric environments."
   },
 
-
-
-
-
   {
-    id: 7,
+    id: 8,
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
@@ -126,7 +158,7 @@ const projects: Project[] = [
 
 
   {
-    id: 8,
+    id: 9,
     images: [collage6, off2, off3, off4, off5],
     title: "Corporate Workspaces",
     category: "Interior design",
@@ -134,11 +166,19 @@ const projects: Project[] = [
   },
 
   {
-    id: 9,
+    id: 10,
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems",
     description: "Comprehensive Overview As-is Journey. Translating complex financial data into intuitive visual interfaces."
+  },
+
+  {
+    id: 11,
+    images: [CART1],
+    title: "CAR-T Cell Therapy",
+    category: "System Design",
+    description: "A thorough understanding and capture of systems, teams, and people involved in the process, as well as identifying the complexities in each stage of the process"
   },
 
 
@@ -264,21 +304,21 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
         </div>
 
 
-      <div className="p-6 md:p-8 bg-white border-t border-border/30">
-        <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">
-          {project.category}
-        </span>
-        <h4 className="text-lg md:text-xl font-bold text-foreground leading-tight mb-2">
-          {project.title}
-        </h4>
-        {project.description && (
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {project.description}
-          </p>
-        )}
-      </div>
-    </motion.div>
-  </>
+        <div className="p-6 md:p-8 bg-white border-t border-border/30">
+          <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">
+            {project.category}
+          </span>
+          <h4 className="text-lg md:text-xl font-bold text-foreground leading-tight mb-2">
+            {project.title}
+          </h4>
+          {project.description && (
+            <p className="text-sm text-muted-foreground line-clamp-2">
+              {project.description}
+            </p>
+          )}
+        </div>
+      </motion.div>
+    </>
   );
 }
 

@@ -74,7 +74,7 @@ export default function PostsAndBlogs() {
           </motion.a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-[1600px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1600px] mx-auto">
           {posts.map((post, index) => (
             <motion.div
               key={post.id}
@@ -105,7 +105,7 @@ export default function PostsAndBlogs() {
                 )}
               </div>
 
-              <div className="p-8 md:p-12">
+              <div className="p-6 md:p-8">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
                     {post.category}

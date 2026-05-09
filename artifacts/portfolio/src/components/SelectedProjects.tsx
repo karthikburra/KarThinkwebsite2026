@@ -153,7 +153,7 @@ const projects: Project[] = [
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
-    description: "A comprehensive mobile banking solution focusing on user-centric financial management and seamless verification flows."
+    description: "Empowering leadership teams to navigate complexity through structured Design Thinking frameworks. I bridge the gap between high-level vision and user-centric innovation to drive measurable business outcomes."
   },
 
 
@@ -162,7 +162,7 @@ const projects: Project[] = [
     images: [collage6, off2, off3, off4, off5],
     title: "Corporate Workspaces",
     category: "Interior design",
-    description: "Modern office interiors designed for collaboration, emphasizing Dr. Reddy's brand identity and employee well-being."
+    description: "Office interiors designed for collaboration, emphasizing Dr. Reddy's brand identity and employee well-being."
   },
 
   {

@@ -121,10 +121,8 @@ const projects: Project[] = [
     images: [DY1, DY2],
     title: "City Waste managment",
     category: "Service design",
-    description: "A comprehen sive showcase of exhibition design, featuring innovative spatial arrangements and brand-centric environments."
+    description: "A cleaner city begins at your doorstep"
   },
-
-
 
   {
     id: 6,
@@ -150,7 +148,6 @@ const projects: Project[] = [
     category: "Space design",
     description: "A comprehensive showcase of exhibition design, featuring innovative spatial arrangements and brand-centric environments."
   },
-
 
   {
     id: 9,

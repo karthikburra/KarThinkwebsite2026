@@ -59,6 +59,10 @@ import DS6 from '../assets/DS (6).png'
 import DS7 from '../assets/DS (7).png'
 import DS8 from '../assets/DS (8).png'
 import CART1 from '../assets/CART.jpg'
+import DY1 from '../assets/DY.jpg'
+import DY2 from '../assets/DY1.jpg'
+
+
 
 
 
@@ -114,6 +118,16 @@ const projects: Project[] = [
 
   {
     id: 5,
+    images: [DY1, DY2],
+    title: "City Waste managment",
+    category: "Service design",
+    description: "A comprehen sive showcase of exhibition design, featuring innovative spatial arrangements and brand-centric environments."
+  },
+
+
+
+  {
+    id: 6,
     images: [collage7, bank1, bank2, bank3, bank4, bank5],
     title: "Digital Banking Ecosystem",
     category: "Design task",
@@ -121,7 +135,7 @@ const projects: Project[] = [
     externalUrl: "https://tpbank.vercel.app/"
   },
   {
-    id: 6,
+    id: 7,
     images: [TR1],
     title: "Terrace garden",
     category: "Visual system",
@@ -130,15 +144,16 @@ const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: 8,
     images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
     title: "CPHI- Booth design",
     category: "Space design",
     description: "A comprehensive showcase of exhibition design, featuring innovative spatial arrangements and brand-centric environments."
   },
 
+
   {
-    id: 8,
+    id: 9,
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
@@ -148,7 +163,7 @@ const projects: Project[] = [
 
 
   {
-    id: 9,
+    id: 10,
     images: [collage6, off2, off3, off4, off5],
     title: "Corporate Workspaces",
     category: "Interior design",
@@ -156,7 +171,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 10,
+    id: 11,
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems, Analytical Dashboards ",
@@ -165,7 +180,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 11,
+    id: 12,
     images: [CART1],
     title: "CAR-T Cell Therapy",
     category: "System Design",

@@ -116,16 +116,10 @@ const projects: Project[] = [
     isConfidential: true
   },
 
-  {
-    id: 5,
-    images: [DY1, DY2],
-    title: "City Waste managment",
-    category: "Service design",
-    description: "A cleaner city begins at your doorstep"
-  },
+
 
   {
-    id: 6,
+    id: 5,
     images: [collage7, bank1, bank2, bank3, bank4, bank5],
     title: "Digital Banking Ecosystem",
     category: "Design task",
@@ -133,7 +127,7 @@ const projects: Project[] = [
     externalUrl: "https://tpbank.vercel.app/"
   },
   {
-    id: 7,
+    id: 6,
     images: [TR1],
     title: "Terrace garden",
     category: "Visual system",
@@ -142,7 +136,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 8,
+    id: 7,
     images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
     title: "CPHI- Booth design",
     category: "Space design",
@@ -150,7 +144,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 9,
+    id: 8,
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
@@ -160,7 +154,7 @@ const projects: Project[] = [
 
 
   {
-    id: 10,
+    id: 9,
     images: [collage6, off2, off3, off4, off5],
     title: "Corporate Workspaces",
     category: "Interior design",
@@ -168,7 +162,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 11,
+    id: 10,
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems, Analytical Dashboards ",
@@ -177,7 +171,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 12,
+    id: 11,
     images: [CART1],
     title: "CAR-T Cell Therapy",
     category: "System Design",

@@ -59,6 +59,10 @@ import DS6 from '../assets/DS (6).png'
 import DS7 from '../assets/DS (7).png'
 import DS8 from '../assets/DS (8).png'
 import CART1 from '../assets/CART.jpg'
+import WY1 from '../assets/WY1.png'
+import MJ1 from '../assets/MJ1.jpg'
+import DO1 from '../assets/DO1.jpg'
+import B1 from '../assets/B1.jpg'
 import DY1 from '../assets/DY.jpg'
 import DY2 from '../assets/DY1.jpg'
 
@@ -94,6 +98,17 @@ const projects: Project[] = [
 
   {
     id: 2,
+    images: [WY1],
+    title: "The Laundry Saas Product",
+    category: "Product Design and development",
+    description: "Complete UI/UX and Mobile app and Webapp Development for The Laundry SaaS Product.",
+    externalUrl: "https://play.google.com/store/apps/details?id=com.anonymous.customermobile"
+  },
+
+
+
+  {
+    id: 3,
     images: [CA1],
     title: "Website for CA firm",
     category: "Design and development",
@@ -101,14 +116,14 @@ const projects: Project[] = [
     externalUrl: "https://sr-jtaxglobal.vercel.app/"
   },
   {
-    id: 3,
+    id: 4,
     images: [Mind1, Mind2, Mind3, Mind4, Mind5, Mind6, Mind7, Mind8, Mind9, Mind10, Mind11, Mind12, Mind13, Mind14, Mind15],
     title: "Mindfluential trading",
     category: "UIUX design",
     description: "Owning the project end-to-end from project planning, user research, ideation, information architecture, wireframing, and visual design to managing the development process, timelines, and client requirements to ensure successful delivery."
   },
   {
-    id: 4,
+    id: 5,
     images: [info2, cog1],
     title: "AI Assisted Product Selection",
     category: "Visual Systems, UIUX design",
@@ -117,9 +132,8 @@ const projects: Project[] = [
   },
 
 
-
   {
-    id: 5,
+    id: 6,
     images: [collage7, bank1, bank2, bank3, bank4, bank5],
     title: "Digital Banking Ecosystem",
     category: "Design task",
@@ -127,7 +141,7 @@ const projects: Project[] = [
     externalUrl: "https://tpbank.vercel.app/"
   },
   {
-    id: 6,
+    id: 7,
     images: [TR1],
     title: "Terrace garden",
     category: "Visual system",
@@ -136,7 +150,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: 8,
     images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
     title: "CPHI- Booth design",
     category: "Space design",
@@ -144,7 +158,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 8,
+    id: 9,
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
@@ -154,15 +168,15 @@ const projects: Project[] = [
 
 
   {
-    id: 9,
-    images: [collage6, off2, off3, off4, off5],
+    id: 10,
+    images: [off5, collage6, DO1, off2, off3, off4, off5],
     title: "Corporate Workspaces",
     category: "Interior design",
     description: "Office interiors designed for collaboration, emphasizing Dr. Reddy's brand identity and employee well-being."
   },
 
   {
-    id: 10,
+    id: 11,
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems, Analytical Dashboards ",
@@ -171,12 +185,21 @@ const projects: Project[] = [
   },
 
   {
-    id: 11,
+    id: 12,
     images: [CART1],
     title: "CAR-T Cell Therapy",
     category: "System Design",
     description: "A thorough understanding and capture of systems, teams, and people involved in the process, as well as identifying the complexities in each stage of the process",
     isConfidential: true
+  },
+
+  {
+    id: 13,
+    images: [MJ1],
+    title: "The Riverside Courtyard Retreat",
+    category: "Architectural design",
+    description: "An idyllic riverside courtyard farmhouse featuring three en-suite bedrooms, open-to-sky gardens, and an expansive entertainment wing with a private pool and bar area overlooking the water.",
+    externalUrl: "https://drive.google.com/file/d/15ioua3ol9tQuGVcMn4sRpZa0HBuySqda/view?usp=sharing"
   },
 
 

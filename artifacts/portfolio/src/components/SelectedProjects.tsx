@@ -62,6 +62,7 @@ import CART1 from '../assets/CART.jpg'
 import WY1 from '../assets/WY1.png'
 import MJ1 from '../assets/MJ1.jpg'
 import DO1 from '../assets/DO1.jpg'
+import Bam from '../assets/Bam.png'
 import B1 from '../assets/B1.jpg'
 import DY1 from '../assets/DY.jpg'
 import DY2 from '../assets/DY1.jpg'
@@ -104,11 +105,18 @@ const projects: Project[] = [
     description: "Complete UI/UX and Mobile app and Webapp Development for The Laundry SaaS Product.",
     externalUrl: "https://play.google.com/store/apps/details?id=com.anonymous.customermobile"
   },
-
+  {
+    id: 3,
+    images: [Bam],
+    title: "BambooMade Website",
+    category: "UIUX design and developemt",
+    description: "Responsive Professional BambooMade website optimized for mobile readability and seamless project inquiry conversion.",
+    externalUrl: "https://www.bamboomade.in/"
+  },
 
 
   {
-    id: 3,
+    id: 4,
     images: [CA1],
     title: "Website for CA firm",
     category: "Design and development",
@@ -116,14 +124,14 @@ const projects: Project[] = [
     externalUrl: "https://sr-jtaxglobal.vercel.app/"
   },
   {
-    id: 4,
+    id: 5,
     images: [Mind1, Mind2, Mind3, Mind4, Mind5, Mind6, Mind7, Mind8, Mind9, Mind10, Mind11, Mind12, Mind13, Mind14, Mind15],
     title: "Mindfluential trading",
     category: "UIUX design",
     description: "Owning the project end-to-end from project planning, user research, ideation, information architecture, wireframing, and visual design to managing the development process, timelines, and client requirements to ensure successful delivery."
   },
   {
-    id: 5,
+    id: 6,
     images: [info2, cog1],
     title: "AI Assisted Product Selection",
     category: "Visual Systems, UIUX design",
@@ -133,7 +141,7 @@ const projects: Project[] = [
 
 
   {
-    id: 6,
+    id: 7,
     images: [collage7, bank1, bank2, bank3, bank4, bank5],
     title: "Digital Banking Ecosystem",
     category: "Design task",
@@ -141,7 +149,7 @@ const projects: Project[] = [
     externalUrl: "https://tpbank.vercel.app/"
   },
   {
-    id: 7,
+    id: 8,
     images: [TR1],
     title: "Terrace garden",
     category: "Visual system",
@@ -150,7 +158,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 8,
+    id: 9,
     images: [CPHI4, CPHI2, CPHI3, CPHI5, CPHI1, CPHI6, CPHI7],
     title: "CPHI- Booth design",
     category: "Space design",
@@ -158,7 +166,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 9,
+    id: 10,
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
@@ -168,7 +176,7 @@ const projects: Project[] = [
 
 
   {
-    id: 10,
+    id: 11,
     images: [off5, collage6, DO1, off2, off3, off4, off5],
     title: "Corporate Workspaces",
     category: "Interior design",
@@ -176,7 +184,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 11,
+    id: 12,
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems, Analytical Dashboards ",
@@ -185,7 +193,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 12,
+    id: 13,
     images: [CART1],
     title: "CAR-T Cell Therapy",
     category: "System Design",
@@ -194,7 +202,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 13,
+    id: 14,
     images: [MJ1],
     title: "The Riverside Courtyard Retreat",
     category: "Architectural design",

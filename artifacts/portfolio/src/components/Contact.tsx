@@ -120,11 +120,11 @@ export default function Contact() {
               }}>
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
-                  <Input id="name" name="name" placeholder="John Doe" className="bg-background/50 h-12 rounded-xl border-border" required />
+                  <Input id="name" name="name" placeholder="Rahul Sharma" className="bg-background/50 h-12 rounded-xl border-border" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
-                  <Input id="email" name="email" type="email" placeholder="john@example.com" className="bg-background/50 h-12 rounded-xl border-border" required />
+                  <Input id="email" name="email" type="email" placeholder="rahul@example.com" className="bg-background/50 h-12 rounded-xl border-border" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>

@@ -100,9 +100,9 @@ const projects: Project[] = [
   {
     id: 2,
     images: [WY1],
-    title: "The Laundry Saas Product",
+    title: "The Laundry Saas and Mobile app",
     category: "Product Design and development",
-    description: "Complete UI/UX and Mobile app and Webapp Development for The Laundry SaaS Product.",
+    description: "Accelerated customer acquisition and digital presence for a traditional laundry storefront, scaling online bookings to secure ₹1 Lakh in revenue, by translating the offline customer journey into an intuitive online booking application.",
     externalUrl: "https://play.google.com/store/apps/details?id=com.anonymous.customermobile"
   },
   {
@@ -134,8 +134,8 @@ const projects: Project[] = [
     id: 6,
     images: [info2, cog1],
     title: "AI Assisted Product Selection",
-    category: "Visual Systems, UIUX design",
-    description: "Reshaping product selection process by data driven decision transform making early in the process.",
+    category: "Product design",
+    description: "Achieved 100% product universe coverage for strategic portfolio selection by building an AI-assisted ranking system across 6 key dimensions, compressing decision-making timelines from 1 month to 1 week while enabling real-time data auto-syncs.",
     isConfidential: true
   },
 
@@ -170,7 +170,7 @@ const projects: Project[] = [
     images: [Work1],
     title: "Design thinking worksops",
     category: "Workshops",
-    description: "Empowering leadership teams to navigate complexity through structured Design Thinking frameworks. I bridge the gap between high-level vision and user-centric innovation to drive measurable business outcomes.",
+    description: "Empowered cross-functional leadership teams to navigate complex product strategy, reducing alignment and decision-making timelines, by facilitating structured Design Thinking workshops that effectively bridged the gap between corporate vision and user-centric innovation.",
     isConfidential: true
   },
 
@@ -188,16 +188,16 @@ const projects: Project[] = [
     images: [info5],
     title: "Finance Dashboards",
     category: "Visual Systems, Analytical Dashboards ",
-    description: "Comprehensive Overview As-is Journey. Translating complex financial data into intuitive visual interfaces.",
+    description: "Transformed complex financial data into intuitive visual interfaces, reducing user data interrogation time from hours to minutes, by introducing a strict typographic hierarchy, progressive disclosure layouts, and interactive, high-density charts.",
     isConfidential: true
   },
 
   {
     id: 13,
     images: [CART1],
-    title: "CAR-T Cell Therapy",
+    title: "Cancer Treatment Process",
     category: "System Design",
-    description: "A thorough understanding and capture of systems, teams, and people involved in the process, as well as identifying the complexities in each stage of the process",
+    description: "Accelerated the development lifecycle of a multi-stakeholder healthcare platform, reducing scoping ambiguity for the digital product team by 75%, by translating a highly complex cancer care journey into structured system ecosystem maps, user personas, and technical process workflows.",
     isConfidential: true
   },
 
@@ -257,13 +257,11 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
       )}
 
       <motion.div
-        className={`relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8 ${project.isConfidential ? 'cursor-default' : 'cursor-pointer'
-          }`}
+        className="relative group break-inside-avoid bg-white rounded-3xl overflow-hidden border-2 border-slate-100 shadow-md hover:shadow-2xl hover:border-slate-200 transition-all duration-500 mb-8 cursor-pointer"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         onClick={() => {
-          if (project.isConfidential) return;
           if (hasDualActions) {
             setMobileSheetOpen(true);
             return;
@@ -355,7 +353,7 @@ function ProjectCard({ project, onClick }: { project: Project, onClick: () => vo
             {project.title}
           </h4>
           {project.description && (
-            <p className="text-sm text-muted-foreground line-clamp-2">
+            <p className="text-sm text-muted-foreground">
               {project.description}
             </p>
           )}
@@ -380,7 +378,7 @@ export default function SelectedProjects() {
 
   // Auto-slideshow in the modal every 6 seconds
   useEffect(() => {
-    if (!activeProject) return;
+    if (!activeProject || activeProject.isConfidential) return;
     const totalItems = activeProject.videoUrl ? activeProject.images.length + 1 : activeProject.images.length;
     if (totalItems <= 1) return;
 
@@ -451,7 +449,7 @@ export default function SelectedProjects() {
               <X className="w-6 h-6" />
             </button>
 
-            {activeProject.images.length > 1 && (
+            {activeProject.images.length > 1 && !activeProject.isConfidential && (
               <>
                 <button
                   onClick={(e) => { e.stopPropagation(); prevImage(); }}
@@ -521,7 +519,7 @@ export default function SelectedProjects() {
                   </p>
                 )}
 
-                {activeProject.videoUrl || activeProject.images.length > 1 ? (
+                {!activeProject.isConfidential && (activeProject.videoUrl || activeProject.images.length > 1) ? (
                   <div className="flex justify-center gap-4 pb-4">
                     {Array.from({ length: activeProject.videoUrl ? activeProject.images.length + 1 : activeProject.images.length }).map((_, i) => (
                       <button

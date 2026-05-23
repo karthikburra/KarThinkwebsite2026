@@ -89,6 +89,7 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
   const [suggestedPool, setSuggestedPool] = useState<typeof qaData>([]);
   const [hasScrolled, setHasScrolled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isAutoScrolling = useRef(false);
 
   useEffect(() => {
     // Shuffle suggestions on mount
@@ -98,7 +99,12 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
   useEffect(() => {
     if (scrollRef.current) {
       if (messages.length > 1 || isTyping) {
+        isAutoScrolling.current = true;
         scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        
+        setTimeout(() => {
+          isAutoScrolling.current = false;
+        }, 100);
       }
 
       // If the content is short and doesn't require scrolling, show suggestions immediately
@@ -106,11 +112,13 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
         if (scrollRef.current && scrollRef.current.scrollHeight <= scrollRef.current.clientHeight + 20) {
           setHasScrolled(true);
         }
-      }, 100);
+      }, 150);
     }
   }, [messages, isTyping, isOpen]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (isAutoScrolling.current) return;
+    
     if (!hasScrolled && e.currentTarget.scrollTop > 20) {
       setHasScrolled(true);
     }
@@ -133,7 +141,7 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
 
   const handleSend = (text: string, key?: string) => {
     if (!text.trim()) return;
-    setHasScrolled(true);
+    setHasScrolled(false);
 
     if (key) {
       setAskedKeys(prev => [...prev, key]);

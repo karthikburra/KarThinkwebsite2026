@@ -26,7 +26,7 @@ const qaData = [
     key: 'products',
     keywords: ['products have you worked', 'worked on', 'portfolio'],
     question: "What kind of products have you worked on?",
-    answer: "I’ve worked on:\n- SaaS products,\n- enterprise workflow platforms,\n- market intelligence tools,\n- risk prediction systems,\n- design systems,\n- dashboards,\n- AI-assisted workflows,\n- internal enterprise tools,\n- and customer-facing applications.\n\nI also designed, shipped, and deployed a production-ready laundry service mobile app to the Google Play Store using AI-assisted development workflows."
+    answer: "I’ve worked on:\n- SaaS products,\n- enterprise workflow platforms,\n- market intelligence tools,\n- risk prediction systems,\n- design systems,\n- dashboards,\n- AI-assisted workflows,\n- internal enterprise tools,\n- and customer-facing applications.\n\nWeYou (Google Play Store):\nA live, production-ready laundry service app that I designed, shipped, and deployed using advanced AI-assisted development workflows."
   },
   {
     key: 'ai_workflow',
@@ -72,7 +72,7 @@ const qaData = [
   }
 ];
 
-const introMessage = "Hi, I’m Karthik — a Product Designer who designs, builds, and ships AI-assisted digital products.\n\nMy journey started in architecture, where I learned systems thinking, structure, and human-centered problem solving. I recently worked at Dr. Reddy’s Laboratories designing enterprise products, workflows, and scalable systems across multiple business units.\n\nI combine UX strategy, AI-assisted workflows, rapid prototyping, and deployment to turn complex ideas into usable products.\n\nFeel free to ask me anything about my work, process, AI workflows, projects, or product thinking.";
+const introMessage = "Hi there,\nI’m Karthik Burra, Product Designer\nI don’t just design products-I ship them.\n\nI take complex, chaotic ideas and turn them into scalable, intuitive digital products. With a background rooted in architectural design, systems thinking is second nature to me.\n\nI recently put this to work at Dr. Reddy’s Laboratories, designing enterprise products and workflows across multiple business units. By combining UX strategy with AI-assisted workflows and rapid deployment, I build digital systems that don't just look good, but drive real operational impact.";
 
 export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (open: boolean) => void }) {
   const [askedKeys, setAskedKeys] = useState<string[]>([]);
@@ -179,14 +179,14 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
     .slice(0, 3); // Show 3 at a time
 
   return (
-    <div className="fixed bottom-8 right-8 z-[200]">
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[200]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[550px] bg-white rounded-[2.5rem] shadow-2xl border border-border overflow-hidden flex flex-col"
+            className="absolute bottom-20 right-0 w-[calc(100vw-2rem)] sm:w-[440px] md:w-[540px] h-[75vh] md:h-[750px] max-h-[85vh] bg-white rounded-[2.5rem] shadow-2xl border border-border overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="p-6 bg-primary text-white flex items-center justify-between">
@@ -263,18 +263,21 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
 
               {/* Suggestions */}
               {!isTyping && availableSuggestions.length > 0 && (
-                <div className="pt-4 space-y-2">
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest px-2 mb-3">Ask me anything:</p>
-                  <div className="flex flex-col gap-2">
-                    {availableSuggestions.map((q) => (
-                      <button
-                        key={q.key}
-                        onClick={() => handleSend(q.question, q.key)}
-                        className="text-xs text-left bg-white border border-border hover:border-primary hover:text-primary px-4 py-3 rounded-2xl transition-all shadow-sm w-full leading-relaxed"
-                      >
-                        {q.question}
-                      </button>
-                    ))}
+                <div className="sticky bottom-0 -mx-6 -mb-6 z-10">
+                  <div className="h-8 bg-gradient-to-t from-slate-50/95 to-transparent pointer-events-none"></div>
+                  <div className="px-6 pb-6 bg-slate-50/95 backdrop-blur-md">
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest px-2 mb-3">Ask me anything:</p>
+                    <div className="flex flex-col gap-2">
+                      {availableSuggestions.map((q) => (
+                        <button
+                          key={q.key}
+                          onClick={() => handleSend(q.question, q.key)}
+                          className="text-xs text-left bg-white border border-border hover:border-primary hover:text-primary px-4 py-3 rounded-2xl transition-all shadow-sm w-full leading-relaxed"
+                        >
+                          {q.question}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}

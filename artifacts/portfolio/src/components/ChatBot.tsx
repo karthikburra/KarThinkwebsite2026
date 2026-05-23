@@ -87,6 +87,7 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [suggestedPool, setSuggestedPool] = useState<typeof qaData>([]);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -96,9 +97,24 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      if (messages.length > 1 || isTyping) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
+
+      // If the content is short and doesn't require scrolling, show suggestions immediately
+      setTimeout(() => {
+        if (scrollRef.current && scrollRef.current.scrollHeight <= scrollRef.current.clientHeight + 20) {
+          setHasScrolled(true);
+        }
+      }, 100);
     }
-  }, [messages, isTyping]);
+  }, [messages, isTyping, isOpen]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (!hasScrolled && e.currentTarget.scrollTop > 20) {
+      setHasScrolled(true);
+    }
+  };
 
   const handleReset = () => {
     setAskedKeys([]);
@@ -112,10 +128,12 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
     ]);
     setSuggestedPool([...qaData].sort(() => 0.5 - Math.random()));
     setInputValue('');
+    setHasScrolled(false);
   };
 
   const handleSend = (text: string, key?: string) => {
     if (!text.trim()) return;
+    setHasScrolled(true);
 
     if (key) {
       setAskedKeys(prev => [...prev, key]);
@@ -219,6 +237,7 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
             {/* Chat Content */}
             <div 
               ref={scrollRef}
+              onScroll={handleScroll}
               className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50/50"
             >
               {messages.map((msg) => (
@@ -262,25 +281,32 @@ export default function ChatBot({ isOpen, setIsOpen }: { isOpen: boolean, setIsO
               )}
 
               {/* Suggestions */}
-              {!isTyping && availableSuggestions.length > 0 && (
-                <div className="sticky bottom-0 -mx-6 -mb-6 z-10">
-                  <div className="h-8 bg-gradient-to-t from-slate-50/95 to-transparent pointer-events-none"></div>
-                  <div className="px-6 pb-6 bg-slate-50/95 backdrop-blur-md">
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest px-2 mb-3">Ask me anything:</p>
-                    <div className="flex flex-col gap-2">
-                      {availableSuggestions.map((q) => (
-                        <button
-                          key={q.key}
-                          onClick={() => handleSend(q.question, q.key)}
-                          className="text-xs text-left bg-white border border-border hover:border-primary hover:text-primary px-4 py-3 rounded-2xl transition-all shadow-sm w-full leading-relaxed"
-                        >
-                          {q.question}
-                        </button>
-                      ))}
+              <AnimatePresence>
+                {hasScrolled && !isTyping && availableSuggestions.length > 0 && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="sticky bottom-0 -mx-6 -mb-6 z-10"
+                  >
+                    <div className="h-8 bg-gradient-to-t from-slate-50/95 to-transparent pointer-events-none"></div>
+                    <div className="px-6 pb-6 bg-slate-50/95 backdrop-blur-md">
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-widest px-2 mb-3">Ask me anything:</p>
+                      <div className="flex flex-col gap-2">
+                        {availableSuggestions.map((q) => (
+                          <button
+                            key={q.key}
+                            onClick={() => handleSend(q.question, q.key)}
+                            className="text-xs text-left bg-white border border-border hover:border-primary hover:text-primary px-4 py-3 rounded-2xl transition-all shadow-sm w-full leading-relaxed"
+                          >
+                            {q.question}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Input Area */}

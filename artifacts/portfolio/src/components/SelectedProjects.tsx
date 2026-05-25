@@ -120,7 +120,7 @@ const projects: Project[] = [
     images: [CA1],
     title: "Website for CA firm",
     category: "Design and development",
-    description: "d-to-end lifecycle of this cross-border tax platform, designing a high-trust UI with corporate-tech aesthetics, structured grid systems, and intuitive micro-dashboards that simplify complex financial compliance for US clients. Shifting from abstract strategy to live execution, I engineered the frontend with high-fidelity responsiveness and handled the complete deployment pipeline within a rapid 3-hour window",
+    description: "End-to-end lifecycle of this cross-border tax platform, designing a high-trust UI with corporate-tech aesthetics, structured grid systems, and intuitive micro-dashboards that simplify complex financial compliance for US clients. Shifting from abstract strategy to live execution, I engineered the frontend with high-fidelity responsiveness and handled the complete deployment pipeline within a rapid 3-hour window",
     externalUrl: "https://sr-jtaxglobal.vercel.app/"
   },
   {

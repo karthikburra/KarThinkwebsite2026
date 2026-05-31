@@ -37,8 +37,8 @@ export default async function handler(req, res) {
 
     const mailOptions = {
       from: `"${name}" <${email}>`,
-      to: user,
-      subject: `Portfolio Inquiry from ${name}`,
+      to: 'dcarchitects.info@gmail.com',
+      subject: `Project Inquiry from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     };
 

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Heart } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import logo from '../assets/tree-logo-final.png';
 
-export default function Navbar({ onAboutClick }: { onAboutClick: () => void }) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
@@ -49,8 +50,8 @@ export default function Navbar({ onAboutClick }: { onAboutClick: () => void }) {
           data-testid="link-logo"
         >
           <span className="inline-flex items-center gap-2">
-            <Heart size={24} className="text-primary fill-primary" strokeWidth={0} />
-            <span style={{ fontFamily: 'Poppins, sans-serif' }}><span className="font-normal text-foreground">kar</span><span className="font-bold text-primary">think</span></span>
+            <img src={logo} alt="DC Architects Logo" className="h-12 w-auto object-contain" />
+            <span style={{ fontFamily: 'Poppins, sans-serif' }}><span className="font-bold text-foreground">DC</span><span className="font-normal text-foreground ml-1">Architects</span></span>
           </span>
         </a>
 
@@ -60,14 +61,7 @@ export default function Navbar({ onAboutClick }: { onAboutClick: () => void }) {
             <a 
               key={link.name}
               href={link.href}
-              onClick={(e) => {
-                if (link.name === 'About') {
-                  e.preventDefault();
-                  onAboutClick();
-                } else {
-                  scrollToSection(e, link.href);
-                }
-              }}
+              onClick={(e) => scrollToSection(e, link.href)}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               data-testid={`link-nav-${link.name.toLowerCase()}`}
             >
@@ -101,15 +95,7 @@ export default function Navbar({ onAboutClick }: { onAboutClick: () => void }) {
               <a 
                 key={link.name}
                 href={link.href}
-                onClick={(e) => {
-                  if (link.name === 'About') {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    onAboutClick();
-                  } else {
-                    scrollToSection(e, link.href);
-                  }
-                }}
+                onClick={(e) => scrollToSection(e, link.href)}
                 className="text-2xl font-serif font-bold text-foreground hover:text-primary transition-colors"
               >
                 {link.name}

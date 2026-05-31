@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Linkedin } from 'lucide-react';
-import { Mail, Send } from 'lucide-react';
+import { Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -28,21 +28,21 @@ export default function Contact() {
               </h2>
 
               <div className="mb-10">
-                <h3 className="text-xl font-bold text-foreground mb-3">What I Bring to the Team</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">What We Bring to the Project</h3>
                 <p className="text-muted-foreground mb-4">
-                  I combine product thinking, AI-powered workflows, and rapid execution to design, build, and deploy products in hours-not weeks.
+                  We combine ecological science, advanced 3D spatial modeling, and master planning expertise to design, engineer, and build sustainable outdoor spaces with precision and efficiency.
                 </p>
                 <p className="text-muted-foreground">
-                  Unlike traditional designers, I don’t stop at mockups. I iterate continuously, manage deployments seamlessly, and create user-centric experiences backed by technology and real-world validation.
+                  Unlike traditional designers, we don’t stop at concepts. We manage the entire lifecycle of the land—handling site grading, environmental permits, and construction administration to deliver resilient landscapes backed by regulatory compliance and real-world durability.
                 </p>
               </div>
 
               <div className="space-y-6 mb-12">
-                <a href="mailto:karthikburra2211@gmail.com" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors w-fit group">
+                <a href="mailto:dcarchitects.info@gmail.com" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors w-fit group">
                   <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-lg font-medium">karthikburra2211@gmail.com</span>
+                  <span className="text-lg font-medium">dcarchitects.info@gmail.com</span>
                 </a>
               </div>
 
@@ -50,7 +50,7 @@ export default function Contact() {
                 <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4">Connect</p>
                 <div className="flex gap-4">
                   {[
-                    { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/karthik-burra-75a326a1/" },
+                    { icon: <Linkedin className="w-5 h-5" />, href: "https://in.linkedin.com/in/dolly-chandrawanshi-1786801b1" },
                   ].map((social, i) => (
                     <a
                       key={i}
@@ -120,18 +120,18 @@ export default function Contact() {
               }}>
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
-                  <Input id="name" name="name" placeholder="Rahul Sharma" className="bg-background/50 h-12 rounded-xl border-border" required />
+                  <Input id="name" name="name" placeholder="e.g., Rakesh" className="bg-background/50 h-12 rounded-xl border-border" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
-                  <Input id="email" name="email" type="email" placeholder="rahul@example.com" className="bg-background/50 h-12 rounded-xl border-border" required />
+                  <Input id="email" name="email" type="email" placeholder="e.g., dcarchitects.info@gmail.com" className="bg-background/50 h-12 rounded-xl border-border" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
-                  <Textarea id="message" name="message" placeholder="Tell me about your project..." className="bg-background/50 min-h-[120px] rounded-xl border-border resize-none" required />
+                  <Textarea id="message" name="message" placeholder="Tell us about your site, acreage, or project vision..." className="bg-background/50 min-h-[120px] rounded-xl border-border resize-none" required />
                 </div>
                 <Button type="submit" className="w-full h-12 rounded-xl text-base transition-colors duration-300" data-testid="button-submit-contact">
-                  Send Message <Send className="w-4 h-4 ml-2" />
+                  Submit Project Inquiry <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </form>
             </motion.div>
